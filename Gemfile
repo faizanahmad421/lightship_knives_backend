@@ -31,6 +31,7 @@ gem "rack-cors"
 # Device
 gem 'devise', '~> 4.9', '>= 4.9.3'
 gem 'devise-jwt', '~> 0.12.1'
+gem 'jsonapi-serializer', '~> 2.2'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -42,6 +43,7 @@ group :development, :test do
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
   gem 'letter_opener', '~> 1.4', '>= 1.4.1'
+  gem 'byebug', '~>11.1', '>= 11.1.3'
 end
 
 

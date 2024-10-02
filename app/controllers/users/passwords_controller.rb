@@ -1,4 +1,5 @@
 class Users::PasswordsController < Devise::PasswordsController
+  include RackSessionsFix
   respond_to :json
 
   private
