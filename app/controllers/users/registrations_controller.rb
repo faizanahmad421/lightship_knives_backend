@@ -1,4 +1,5 @@
 class Users::RegistrationsController < Devise::RegistrationsController
+  include RackSessionsFix
   respond_to :json
 
   private
@@ -10,10 +11,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def register_success(resource)
-    render json: { message: 'Signed up successfully', user: resource, token: current_token }, status: :ok
+    render json: { message: 'Signed up successfully.', data: { user: UserSerializer.new(current_user).serializable_hash[:data][:attributes] }, token: current_token }, status: :ok
   end
 
   def register_failed
-    render json: { message: 'Something went wrong' }, status: :unprocessable_entity
+    render json: { message: current_user.errors.full_messages.to_sentence }, status: :unprocessable_entity
   end
 end
